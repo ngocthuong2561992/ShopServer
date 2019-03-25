@@ -1,0 +1,207 @@
+
+DROP TABLE IF EXISTS `USER`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `USER` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `USERNAME` varchar(255) ,
+  `FIRST_NAME` varchar(255) ,
+  `LAST_NAME` varchar(255) ,
+  `BIRTHDAY` datetime ,
+  `SEX` bit(1) ,
+  `PASSWORD` varchar(255) ,
+  `TEL` varchar(15) ,
+  `EMAIL` longtext,
+  `ADDRESS` varchar(255) ,
+  `Image` varchar(255),
+  `Role` varchar(255),
+  `CREATED_AT` datetime ,
+  `CREATED_USER` int(11) ,
+  `UPDATED_AT` datetime ,
+  `UPDATED_USER` int(11),
+  `DELETED_AT` datetime ,
+  `DELETED_USER` int(11) ,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `Product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Product` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) ,
+  `Code` varchar(255) ,
+  `MetaTitle` varchar(255) ,
+  `Description` varchar(500) ,
+  `Image` varchar(255) ,
+  `MoreImages` varchar(255),
+  `Price` int(11) ,
+  `PromotionPrice` int(11),
+  `IncludedVAT` bit(1),
+  `Quantity` int(11),
+  `Detail` varchar(255),
+   Warranty    int(11),
+  `CategoryID` int(11),
+  `CREATED_AT` datetime ,
+  `CREATED_USER` int(11) ,
+  `UPDATED_AT` datetime ,
+  `UPDATED_USER` int(11) ,
+  `DELETED_AT` datetime ,
+  `DELETED_USER` int(11) ,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+DROP TABLE IF EXISTS `Category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Category` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) ,
+  `Code` varchar(255) ,
+  `MetaTitle` varchar(255) ,
+  `ParentID` int(11) ,
+  `DisplayOrder` int(11) ,
+  `SeoTitle` varchar(255) ,
+  `Description` longtext,
+  `MetaKeywords` varchar(255) ,
+  `MetaDescriptions` varchar(255),
+  `Status` bit(1),
+  `ShowOnHome` bit(1),
+  `Icon` varchar(255),
+  `Image` varchar(255),
+  `CREATED_AT` datetime ,
+  `CREATED_USER` int(11) ,
+  `UPDATED_AT` datetime ,
+  `UPDATED_USER` int(11) ,
+  `DELETED_AT` datetime ,
+  `DELETED_USER` int(11) ,
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `Order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Order` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CustomerID` varchar(255) ,
+  `ShipName` varchar(255) ,
+  `ShipMobile` varchar(255) ,
+  `ShipAddress` varchar(255) ,
+  `ShipEmail` varchar(255) ,
+  `ShipContent` varchar(255) ,
+  `Status` bit(1) ,
+ ` DELETED_USER` int(11),
+  `CREATED_AT` datetime ,
+  `CREATED_USER` int(11) ,
+  `UPDATED_AT` datetime ,
+  `UPDATED_USER` int(11) ,
+  `DELETED_AT` datetime ,
+  `DELETED_USER` int(11) ,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `OrderDetail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `OrderDetail` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ProductID` varchar(255) ,
+  `OrderID` varchar(255) ,
+  `Quantity` int(11) ,
+  `Price` int(11) ,
+  `CREATED_AT` datetime ,
+  `CREATED_USER` int(11) ,
+  `UPDATED_AT` datetime ,
+  `UPDATED_USER` int(11) ,
+  `DELETED_AT` datetime ,
+  `DELETED_USER` int(11) ,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8;
+
+
+
+DROP TABLE IF EXISTS `Feedback`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Feedback` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) ,
+  `Phone` varchar(255) ,
+  `Email`  varchar(255) ,
+  `Address`  varchar(255) ,
+  `Content`  varchar(255) ,
+  `CREATED_AT` datetime ,
+  `CREATED_USER` int(11) ,
+  `UPDATED_AT` datetime ,
+  `UPDATED_USER` int(11) ,
+  `DELETED_AT` datetime ,
+  `DELETED_USER` int(11) ,
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8;
+
+
+
+
+
+DROP TABLE IF EXISTS `Menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Menu` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) ,
+  `Link` varchar(255) ,
+  `DisplayOrder` bit(1) ,
+  `Target` varchar(255) ,
+  `Status` bit(1) ,
+  `TypeID` int(11) ,
+ ` DELETED_USER` int(11),
+  `CREATED_AT` datetime ,
+  `CREATED_USER` int(11) ,
+  `UPDATED_AT` datetime ,
+  `UPDATED_USER` int(11) ,
+  `DELETED_AT` datetime ,
+  `DELETED_USER` int(11) ,
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `MenuType`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `MenuType` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) ,
+  `CREATED_AT` datetime ,
+  `CREATED_USER` int(11) ,
+  `UPDATED_AT` datetime ,
+  `UPDATED_USER` int(11) ,
+  `DELETED_AT` datetime ,
+  `DELETED_USER` int(11) ,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+DROP TABLE IF EXISTS `Slide`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Slide` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Image` varchar(255) ,
+  `DisplayOrder` int(11) ,
+  `Link` int(11) ,
+  `Description` varchar(255) ,
+  `Status` bit(1) ,
+  `CREATED_AT` datetime ,
+  `CREATED_USER` int(11) ,
+  `UPDATED_AT` datetime ,
+  `UPDATED_USER` int(11) ,
+  `DELETED_AT` datetime ,
+  `DELETED_USER` int(11) ,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
